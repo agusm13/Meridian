@@ -3,977 +3,368 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Meridian — Legal Operations Platform</title>
+<title>Meridian — Operations Hub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
 <div class="shell">
 
-<!-- ══════════════════════════════════════════════════ SIDEBAR ══ -->
+<!-- ═══════════════════════════════════════════ SIDEBAR ═══ -->
 <nav class="sidebar">
   <div class="logo">
-    <div class="logo-row">
-      <div class="logo-mark">M</div>
-      <div>
-        <div class="logo-name">Meridian</div>
-        <div class="logo-sub">Legal Ops Platform</div>
-      </div>
+    <div class="logo-mark">M</div>
+    <div>
+      <div class="logo-name">Meridian</div>
+      <div class="logo-sub">Ops Hub</div>
     </div>
   </div>
 
   <div class="nav">
-    <div class="nav-section">
-      <div class="nav-label">Overview</div>
-      <button class="nav-item active" onclick="showView('dashboard',this,'Executive Dashboard','Meridian › Dashboard')">
-        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
-        <span>Dashboard</span>
-      </button>
-    </div>
-    <div class="nav-section">
-      <div class="nav-label">Legal Ops</div>
-      <button class="nav-item" onclick="showView('matters',this,'Matter Management','Meridian › Matters')">
-        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h8M4 9h6M3 2h10a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1z"/></svg>
-        <span>Matters</span>
-        <span class="nav-badge">3</span>
-      </button>
-      <button class="nav-item" onclick="showView('calendar',this,'Deadline Calendar','Meridian › Deadlines')">
-        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="14" height="12" rx="1"/><path d="M5 1v4M11 1v4M1 7h14"/></svg>
-        <span>Deadlines</span>
-      </button>
-      <button class="nav-item" onclick="showView('docs',this,'Document Repository','Meridian › Documents')">
-        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 1H3a1 1 0 00-1 1v12a1 1 0 001 1h10a1 1 0 001-1V7L9 1z"/><path d="M9 1v6h6"/></svg>
-        <span>Documents</span>
-      </button>
-    </div>
-    <div class="nav-section">
-      <div class="nav-label">Finance</div>
-      <button class="nav-item" onclick="showView('counsel',this,'Outside Counsel & Billing','Meridian › Outside Counsel')">
-        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1.5"/></svg>
-        <span>Outside Counsel</span>
-      </button>
-    </div>
-    <div class="nav-section">
-      <div class="nav-label">Intelligence</div>
-      <button class="nav-item" onclick="showView('analytics',this,'Analytics & Reporting','Meridian › Analytics')">
-        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12l3-4 3 2 3-5 3 3"/></svg>
-        <span>Analytics</span>
-      </button>
-    </div>
+    <button class="nav-item active" data-view="board">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="2" width="4" height="12" rx="1"/><rect x="6" y="2" width="4" height="8" rx="1"/><rect x="11" y="2" width="4" height="10" rx="1"/></svg>
+      Board
+    </button>
+    <button class="nav-item" data-view="list">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h10M4 8h10M4 12h7"/><circle cx="1.5" cy="4" r=".75" fill="currentColor" stroke="none"/><circle cx="1.5" cy="8" r=".75" fill="currentColor" stroke="none"/><circle cx="1.5" cy="12" r=".75" fill="currentColor" stroke="none"/></svg>
+      List
+    </button>
+    <button class="nav-item" data-view="timeline">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="14" height="11" rx="1"/><path d="M5 1v4M11 1v4M1 7h14"/></svg>
+      Timeline
+    </button>
+    <button class="nav-item" data-view="requests">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h12a1 1 0 011 1v8a1 1 0 01-1 1H2a1 1 0 01-1-1V4a1 1 0 011-1z"/><path d="M1 4l7 4 7-4"/></svg>
+      Requests
+      <span class="nav-badge" id="nav-req-badge">4</span>
+    </button>
+    <button class="nav-item" data-view="projects">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h4l2 2h6a1 1 0 011 1v7a1 1 0 01-1 1H2a1 1 0 01-1-1V4a1 1 0 011-1z"/></svg>
+      Projects
+    </button>
+    <button class="nav-item" data-view="mywork">
+      <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
+      My Work
+    </button>
   </div>
 
   <div class="sidebar-footer">
     <div class="user-pill">
-      <div class="avatar">EW</div>
+      <div class="avatar">JM</div>
       <div>
-        <div class="user-name">Elena Whitmore</div>
-        <div class="user-role">Sr. Employment Counsel</div>
+        <div class="user-name">Jordan Miller</div>
+        <div class="user-role">Ops Coordinator</div>
       </div>
     </div>
   </div>
 </nav>
 
-<!-- ══════════════════════════════════════════════════════ MAIN ══ -->
+<!-- ═══════════════════════════════════════════ MAIN ═══ -->
 <div class="main">
 
   <!-- TOPBAR -->
   <div class="topbar">
-    <div>
-      <div class="page-title" id="page-title">Executive Dashboard</div>
-      <div class="breadcrumb" id="page-bc">Meridian › Dashboard</div>
-    </div>
+    <button class="btn btn-ghost btn-back" id="proj-back" style="display:none">← All Tasks</button>
+    <div class="page-title" id="page-title">Board</div>
     <div class="topbar-right">
       <div class="search-box">
-        <svg class="search-icon" width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11l3 3"/></svg>
-        <input type="text" placeholder="Search matters, sites, parties…" />
+        <svg class="search-icon" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg>
+        <input type="text" placeholder="Search tasks…" id="search-input" />
       </div>
-      <button class="btn btn-ghost btn-sm">+ New Matter</button>
-      <button class="btn btn-primary btn-sm">Generate Report</button>
+      <button class="btn btn-primary" id="btn-new-task">+ New Task</button>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════════ CONTENT ══ -->
+  <!-- FILTERS -->
+  <div class="filter-bar">
+    <div class="filter-group">
+      <label>Status</label>
+      <select id="filter-status">
+        <option value="all">All</option>
+        <option value="pending">Pending</option>
+        <option value="in-progress">In Progress</option>
+        <option value="completed">Completed</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Priority</label>
+      <select id="filter-priority">
+        <option value="all">All</option>
+        <option value="urgent">Urgent</option>
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Owner</label>
+      <select id="filter-owner">
+        <option value="all">All</option>
+        <option value="Jordan Miller">Jordan Miller</option>
+        <option value="Priya Shah">Priya Shah</option>
+        <option value="Carlos Reyes">Carlos Reyes</option>
+        <option value="Aisha Okafor">Aisha Okafor</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Project</label>
+      <select id="filter-project">
+        <option value="all">All</option>
+        <option value="P-001">Q2 Onboarding</option>
+        <option value="P-002">Office Relocation</option>
+        <option value="P-003">Policy Updates</option>
+        <option value="P-004">Vendor Management</option>
+        <option value="P-005">Q1 Wrap-up</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Team</label>
+      <select id="filter-team">
+        <option value="all">All</option>
+        <option value="People Ops">People Ops</option>
+        <option value="HR">HR</option>
+        <option value="Operations">Operations</option>
+      </select>
+    </div>
+    <button class="btn-clear-filters" id="btn-clear-filters">Clear filters</button>
+  </div>
+
+  <!-- ═══════════════════════════════ CONTENT ═══ -->
   <div class="content">
 
-    <!-- ══════════════════════ VIEW: DASHBOARD ══ -->
-    <div class="view active" id="view-dashboard">
+    <!-- ═══════ VIEW: KANBAN BOARD ═══════ -->
+    <div class="view active" id="view-board">
+      <div class="kanban">
+        <div class="kanban-col" data-status="pending">
+          <div class="kanban-col-header">
+            <span class="col-dot dot-pending"></span>
+            <span class="col-title">Pending</span>
+            <span class="col-count" id="count-pending">0</span>
+          </div>
+          <div class="kanban-cards" id="col-pending"></div>
+        </div>
 
-      <!-- Stat cards -->
-      <div class="stats-grid">
-        <div class="stat-card stat-accent">
-          <div class="stat-label">Total Open Matters</div>
-          <div class="stat-value">142</div>
-          <div class="stat-delta"><span class="delta-warn">↑ 12</span>&nbsp;vs last quarter</div>
+        <div class="kanban-col" data-status="in-progress">
+          <div class="kanban-col-header">
+            <span class="col-dot dot-in-progress"></span>
+            <span class="col-title">In Progress</span>
+            <span class="col-count" id="count-in-progress">0</span>
+          </div>
+          <div class="kanban-cards" id="col-in-progress"></div>
         </div>
-        <div class="stat-card stat-red">
-          <div class="stat-label">Overdue Agency Responses</div>
-          <div class="stat-value">7</div>
-          <div class="stat-delta"><span class="delta-warn">↑ 3</span>&nbsp;requires immediate action</div>
+
+        <div class="kanban-col" data-status="completed">
+          <div class="kanban-col-header">
+            <span class="col-dot dot-completed"></span>
+            <span class="col-title">Completed</span>
+            <span class="col-count" id="count-completed">0</span>
+          </div>
+          <div class="kanban-cards" id="col-completed"></div>
         </div>
-        <div class="stat-card stat-amber">
-          <div class="stat-label">Deadlines This Week</div>
-          <div class="stat-value">19</div>
-          <div class="stat-delta">5 filings · 14 agency responses</div>
+      </div>
+    </div>
+
+    <!-- ═══════ VIEW: LIST ═══════ -->
+    <div class="view" id="view-list">
+      <div class="list-container">
+        <div class="list-header">
+          <span class="lh-title">Task</span>
+          <span class="lh-cell">Priority</span>
+          <span class="lh-cell">Owner</span>
+          <span class="lh-cell">Due</span>
+          <span class="lh-cell">Status</span>
         </div>
-        <div class="stat-card stat-green">
-          <div class="stat-label">YTD Outside Counsel Spend</div>
-          <div class="stat-value">$2.8M</div>
-          <div class="stat-delta"><span class="delta-good">↓ 8%</span>&nbsp;under budget</div>
+        <div id="task-list"></div>
+      </div>
+    </div>
+
+    <!-- ═══════ VIEW: TIMELINE ═══════ -->
+    <div class="view" id="view-timeline">
+      <div class="tl-toolbar">
+        <div class="tl-mode-tabs">
+          <button class="tl-mode-tab active" data-tl-mode="week">Week</button>
+          <button class="tl-mode-tab" data-tl-mode="month">Month</button>
+        </div>
+        <div class="tl-nav">
+          <button class="btn btn-ghost btn-sm" id="tl-prev">←</button>
+          <span class="tl-nav-label" id="tl-nav-label"></span>
+          <button class="btn btn-ghost btn-sm" id="tl-next">→</button>
+          <button class="btn btn-ghost btn-sm" id="tl-today-btn">Today</button>
         </div>
       </div>
 
-      <!-- Main two-col grid -->
-      <div class="dash-main">
-
-        <!-- Left: Priority matters -->
-        <div class="card">
-          <div class="card-header">
-            <span class="card-title">High-Priority Matters</span>
-            <button class="btn btn-ghost btn-sm" onclick="showView('matters',null,'Matter Management','Meridian › Matters')">View All →</button>
-          </div>
-          <table class="tbl">
-            <thead>
-              <tr>
-                <th>Matter</th><th>Type</th><th>Site</th><th>Risk</th><th>Deadline</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr onclick="openDrawer()">
-                <td><div class="mid">M-2024-0891</div><div class="mtitle">Retaliation Allegation — Fremont Assembly</div></td>
-                <td><span class="chip chip-purple">Employment</span></td>
-                <td style="font-size:12px">Fremont, CA</td>
-                <td><span class="rdot rdot-critical"></span></td>
-                <td><span class="chip chip-red">Apr 18</span></td>
-              </tr>
-              <tr onclick="openDrawer()">
-                <td><div class="mid">M-2024-0876</div><div class="mtitle">OSHA Citation — Paint Shop Incident</div></td>
-                <td><span class="chip chip-teal">EHS</span></td>
-                <td style="font-size:12px">Austin, TX</td>
-                <td><span class="rdot rdot-high"></span></td>
-                <td><span class="chip chip-amber">Apr 22</span></td>
-              </tr>
-              <tr onclick="openDrawer()">
-                <td><div class="mid">M-2024-0843</div><div class="mtitle">DFEH Complaint — Disability Accommodation</div></td>
-                <td><span class="chip chip-purple">Employment</span></td>
-                <td style="font-size:12px">Sparks, NV</td>
-                <td><span class="rdot rdot-high"></span></td>
-                <td><span class="chip chip-amber">Apr 25</span></td>
-              </tr>
-              <tr onclick="openDrawer()">
-                <td><div class="mid">M-2024-0812</div><div class="mtitle">Hazmat Reporting — Tri-Gate Battery</div></td>
-                <td><span class="chip chip-teal">EHS</span></td>
-                <td style="font-size:12px">Lathrop, CA</td>
-                <td><span class="rdot rdot-medium"></span></td>
-                <td><span class="chip chip-blue">May 3</span></td>
-              </tr>
-              <tr onclick="openDrawer()">
-                <td><div class="mid">M-2024-0798</div><div class="mtitle">Wage/Hour Class Action — Production Line</div></td>
-                <td><span class="chip chip-purple">Employment</span></td>
-                <td style="font-size:12px">Fremont, CA</td>
-                <td><span class="rdot rdot-critical"></span></td>
-                <td><span class="chip chip-red">Apr 15</span></td>
-              </tr>
-              <tr onclick="openDrawer()">
-                <td><div class="mid">M-2024-0774</div><div class="mtitle">Cal/OSHA Inspection — Body-in-White</div></td>
-                <td><span class="chip chip-teal">EHS</span></td>
-                <td style="font-size:12px">Fremont, CA</td>
-                <td><span class="rdot rdot-high"></span></td>
-                <td><span class="chip chip-amber">Apr 20</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Right sidebar widgets -->
-        <div style="display:flex;flex-direction:column;gap:16px">
-
-          <!-- Urgent Deadlines -->
-          <div class="card">
-            <div class="card-header">
-              <span class="card-title">Urgent Deadlines</span>
-              <button class="btn btn-ghost btn-sm" onclick="showView('calendar',null,'Deadline Calendar','Meridian › Deadlines')">Calendar →</button>
-            </div>
-            <div class="card-body" style="padding:12px 16px">
-              <div class="dl-item">
-                <div class="dl-icon di-red">🔴</div>
-                <div class="dl-body">
-                  <div class="dl-title">NLRB response brief — Wage/Hour</div>
-                  <div class="dl-sub">M-2024-0798 · Fremont Assembly</div>
-                </div>
-                <div class="dl-date date-ov">OVERDUE<br>Apr 12</div>
-              </div>
-              <div class="dl-item">
-                <div class="dl-icon di-red">⚠️</div>
-                <div class="dl-body">
-                  <div class="dl-title">EEOC Position Statement filing</div>
-                  <div class="dl-sub">M-2024-0891 · Retaliation matter</div>
-                </div>
-                <div class="dl-date date-soon">6 days<br>Apr 18</div>
-              </div>
-              <div class="dl-item">
-                <div class="dl-icon di-amb">📋</div>
-                <div class="dl-body">
-                  <div class="dl-title">Cal/OSHA abatement certification</div>
-                  <div class="dl-sub">M-2024-0774 · Body-in-White</div>
-                </div>
-                <div class="dl-date date-soon">8 days<br>Apr 20</div>
-              </div>
-              <div class="dl-item">
-                <div class="dl-icon di-blu">📌</div>
-                <div class="dl-body">
-                  <div class="dl-title">Mediation brief — Sparks DFEH</div>
-                  <div class="dl-sub">M-2024-0843 · Carver & Osei</div>
-                </div>
-                <div class="dl-date date-ok">13 days<br>Apr 25</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Escalation Feed -->
-          <div class="card">
-            <div class="card-header"><span class="card-title">Recent Escalations</span></div>
-            <div class="card-body" style="padding:12px 16px">
-              <div class="esc-item">
-                <div class="esc-dot esc-red"></div>
-                <div class="esc-content">
-                  <div class="esc-title">Executive brief requested — Wage/Hour class action</div>
-                  <div class="esc-meta">VP Legal Affairs · M-2024-0798</div>
-                </div>
-                <div class="esc-time">2h ago</div>
-              </div>
-              <div class="esc-item">
-                <div class="esc-dot esc-amb"></div>
-                <div class="esc-content">
-                  <div class="esc-title">Outside counsel flagged budget overrun</div>
-                  <div class="esc-meta">Hendricks & Voss · M-2024-0876</div>
-                </div>
-                <div class="esc-time">5h ago</div>
-              </div>
-              <div class="esc-item">
-                <div class="esc-dot esc-amb"></div>
-                <div class="esc-content">
-                  <div class="esc-title">New DFEH inquiry — harassment allegation</div>
-                  <div class="esc-meta">Lathrop Gigafactory · intake pending</div>
-                </div>
-                <div class="esc-time">Yesterday</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div><!-- /dash-main -->
-
-      <!-- Bottom row charts -->
-      <div class="dash-bottom">
-
-        <!-- Volume by site -->
-        <div class="card">
-          <div class="card-header"><span class="card-title">Matter Volume by Site</span></div>
-          <div class="card-body">
-            <div class="bar-chart">
-              <div class="bc-col"><div class="bc-val">38</div><div class="bc-bar" style="height:80px;background:var(--accent)"></div><div class="bc-lbl">Fremont</div></div>
-              <div class="bc-col"><div class="bc-val">24</div><div class="bc-bar" style="height:50px;background:var(--accent);opacity:.85"></div><div class="bc-lbl">Austin</div></div>
-              <div class="bc-col"><div class="bc-val">22</div><div class="bc-bar" style="height:46px;background:var(--accent);opacity:.8"></div><div class="bc-lbl">Buffalo</div></div>
-              <div class="bc-col"><div class="bc-val">21</div><div class="bc-bar" style="height:44px;background:var(--accent);opacity:.75"></div><div class="bc-lbl">Sparks</div></div>
-              <div class="bc-col"><div class="bc-val">18</div><div class="bc-bar" style="height:38px;background:var(--accent);opacity:.65"></div><div class="bc-lbl">Lathrop</div></div>
-              <div class="bc-col"><div class="bc-val">19</div><div class="bc-bar" style="height:40px;background:var(--accent);opacity:.6"></div><div class="bc-lbl">Shanghai</div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Risk distribution -->
-        <div class="card">
-          <div class="card-header"><span class="card-title">Risk Distribution</span></div>
-          <div class="card-body">
-            <div class="bar-chart">
-              <div class="bc-col"><div class="bc-val">14</div><div class="bc-bar" style="height:70px;background:var(--red)"></div><div class="bc-lbl">Critical</div></div>
-              <div class="bc-col"><div class="bc-val">38</div><div class="bc-bar" style="height:95px;background:var(--amber)"></div><div class="bc-lbl">High</div></div>
-              <div class="bc-col"><div class="bc-val">52</div><div class="bc-bar" style="height:104px;background:var(--accent)"></div><div class="bc-lbl">Medium</div></div>
-              <div class="bc-col"><div class="bc-val">38</div><div class="bc-bar" style="height:70px;background:var(--green)"></div><div class="bc-lbl">Low</div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Counsel spend -->
-        <div class="card">
-          <div class="card-header"><span class="card-title">Outside Counsel Spend YTD</span></div>
-          <div class="card-body">
-            <div class="spend-row"><div class="spend-firm">Hendricks & Voss</div><div class="spend-track"><div class="spend-fill" style="width:84%;background:var(--accent)"></div></div><div class="spend-amt">$842K</div></div>
-            <div class="spend-row"><div class="spend-firm">Lester Tran LLP</div><div class="spend-track"><div class="spend-fill" style="width:61%;background:var(--teal)"></div></div><div class="spend-amt">$618K</div></div>
-            <div class="spend-row"><div class="spend-firm">Carver & Osei</div><div class="spend-track"><div class="spend-fill" style="width:46%;background:var(--purple)"></div></div><div class="spend-amt">$462K</div></div>
-            <div class="spend-row"><div class="spend-firm">Reid Nakamura</div><div class="spend-track"><div class="spend-fill" style="width:33%;background:var(--amber)"></div></div><div class="spend-amt">$328K</div></div>
-            <div class="spend-row"><div class="spend-firm">Morales EHS Grp</div><div class="spend-track"><div class="spend-fill" style="width:22%;background:var(--green)"></div></div><div class="spend-amt">$224K</div></div>
-            <div style="font-size:11px;color:var(--text3);border-top:1px solid var(--border);padding-top:10px;margin-top:4px">
-              Budget: $3.4M &nbsp;·&nbsp; Remaining: <span style="color:var(--green)">$726K</span>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /dash-bottom -->
-    </div><!-- /view-dashboard -->
-
-    <!-- ══════════════════════ VIEW: MATTERS ══ -->
-    <div class="view" id="view-matters">
-      <div class="filters">
-        <span style="font-size:12px;color:var(--text3);font-weight:500;margin-right:2px">Filter:</span>
-        <div class="fchip active" onclick="filterClick(this)">All (142)</div>
-        <div class="fchip" onclick="filterClick(this)">Employment (87)</div>
-        <div class="fchip" onclick="filterClick(this)">EHS (55)</div>
-        <div class="fchip" onclick="filterClick(this)">Critical Risk</div>
-        <div class="fchip" onclick="filterClick(this)">Overdue</div>
-        <div class="fchip" onclick="filterClick(this)">Fremont</div>
-        <div style="margin-left:auto">
-          <select style="background:var(--bg2);border:1px solid var(--border);color:var(--text2);padding:5px 10px;border-radius:6px;font-size:12px;outline:none">
-            <option>Sort: Deadline ↑</option>
-            <option>Sort: Risk ↓</option>
-            <option>Sort: Opened ↓</option>
-          </select>
-        </div>
-      </div>
-      <div class="card">
-        <table class="tbl">
-          <thead>
-            <tr><th>ID</th><th>Title &amp; Reference</th><th>Category</th><th>Site</th><th>Legal Lead</th><th>Status</th><th>Risk</th><th>Deadline</th></tr>
-          </thead>
-          <tbody>
-            <tr onclick="openDrawer()">
-              <td><span class="mid">M-2024-0891</span></td>
-              <td><div class="mtitle">Retaliation Allegation — Fremont Assembly</div><div class="msub">EEOC Charge No. 550-2024-01822</div></td>
-              <td><span class="chip chip-purple">Employment</span></td>
-              <td style="font-size:12px">Fremont, CA</td>
-              <td style="font-size:12px">E. Whitmore</td>
-              <td><span class="chip chip-amber">Investigation</span></td>
-              <td><span class="rdot rdot-critical"></span></td>
-              <td><span class="chip chip-red">Apr 18</span></td>
-            </tr>
-            <tr onclick="openDrawer()">
-              <td><span class="mid">M-2024-0876</span></td>
-              <td><div class="mtitle">OSHA Citation Response — Paint Shop Incident</div><div class="msub">Citation No. 2024-TX-00417</div></td>
-              <td><span class="chip chip-teal">EHS</span></td>
-              <td style="font-size:12px">Austin, TX</td>
-              <td style="font-size:12px">R. Nakamura</td>
-              <td><span class="chip chip-blue">Response Prep</span></td>
-              <td><span class="rdot rdot-high"></span></td>
-              <td><span class="chip chip-amber">Apr 22</span></td>
-            </tr>
-            <tr onclick="openDrawer()">
-              <td><span class="mid">M-2024-0843</span></td>
-              <td><div class="mtitle">DFEH Complaint — Disability Accommodation</div><div class="msub">DFEH Case No. 202403-24813</div></td>
-              <td><span class="chip chip-purple">Employment</span></td>
-              <td style="font-size:12px">Sparks, NV</td>
-              <td style="font-size:12px">T. Osei</td>
-              <td><span class="chip chip-amber">Mediation Prep</span></td>
-              <td><span class="rdot rdot-high"></span></td>
-              <td><span class="chip chip-amber">Apr 25</span></td>
-            </tr>
-            <tr onclick="openDrawer()">
-              <td><span class="mid">M-2024-0812</span></td>
-              <td><div class="mtitle">Hazmat Reporting Discrepancy — Tri-Gate Battery</div><div class="msub">EPA Region 9 Inquiry</div></td>
-              <td><span class="chip chip-teal">EHS</span></td>
-              <td style="font-size:12px">Lathrop, CA</td>
-              <td style="font-size:12px">S. Morales</td>
-              <td><span class="chip chip-blue">Document Review</span></td>
-              <td><span class="rdot rdot-medium"></span></td>
-              <td><span class="chip chip-blue">May 3</span></td>
-            </tr>
-            <tr onclick="openDrawer()">
-              <td><span class="mid">M-2024-0798</span></td>
-              <td><div class="mtitle">Wage/Hour Class Action — Production Associates</div><div class="msub">Alameda County Superior Court</div></td>
-              <td><span class="chip chip-purple">Employment</span></td>
-              <td style="font-size:12px">Fremont, CA</td>
-              <td style="font-size:12px">E. Whitmore</td>
-              <td><span class="chip chip-red">Hearing Prep</span></td>
-              <td><span class="rdot rdot-critical"></span></td>
-              <td><span class="chip chip-red">Apr 15</span></td>
-            </tr>
-            <tr onclick="openDrawer()">
-              <td><span class="mid">M-2024-0774</span></td>
-              <td><div class="mtitle">Cal/OSHA Inspection — Fremont Body-in-White</div><div class="msub">Cal/OSHA Inspection No. 318401</div></td>
-              <td><span class="chip chip-teal">EHS</span></td>
-              <td style="font-size:12px">Fremont, CA</td>
-              <td style="font-size:12px">R. Nakamura</td>
-              <td><span class="chip chip-amber">Abatement</span></td>
-              <td><span class="rdot rdot-high"></span></td>
-              <td><span class="chip chip-amber">Apr 20</span></td>
-            </tr>
-            <tr onclick="openDrawer()">
-              <td><span class="mid">M-2024-0761</span></td>
-              <td><div class="mtitle">Subpoena Response — DOL Records Request</div><div class="msub">DOL Wage and Hour Division</div></td>
-              <td><span class="chip chip-purple">Employment</span></td>
-              <td style="font-size:12px">Nationwide</td>
-              <td style="font-size:12px">E. Whitmore</td>
-              <td><span class="chip chip-green">In Progress</span></td>
-              <td><span class="rdot rdot-medium"></span></td>
-              <td><span class="chip chip-blue">May 10</span></td>
-            </tr>
-            <tr onclick="openDrawer()">
-              <td><span class="mid">M-2024-0744</span></td>
-              <td><div class="mtitle">Environmental Permit Renewal — Cooling System</div><div class="msub">BAAQMD Permit No. C-29441</div></td>
-              <td><span class="chip chip-teal">EHS</span></td>
-              <td style="font-size:12px">Fremont, CA</td>
-              <td style="font-size:12px">S. Morales</td>
-              <td><span class="chip chip-green">Filing Prep</span></td>
-              <td><span class="rdot rdot-low"></span></td>
-              <td><span class="chip chip-blue">May 15</span></td>
-            </tr>
-            <tr onclick="openDrawer()">
-              <td><span class="mid">M-2024-0731</span></td>
-              <td><div class="mtitle">FMLA Interference Claim — Buffalo Operations</div><div class="msub">HR Escalation — Buffalo Gigafactory</div></td>
-              <td><span class="chip chip-purple">Employment</span></td>
-              <td style="font-size:12px">Buffalo, NY</td>
-              <td style="font-size:12px">T. Osei</td>
-              <td><span class="chip chip-green">Assessment</span></td>
-              <td><span class="rdot rdot-medium"></span></td>
-              <td><span class="chip chip-blue">May 20</span></td>
-            </tr>
-            <tr onclick="openDrawer()">
-              <td><span class="mid">M-2024-0718</span></td>
-              <td><div class="mtitle">Corrective Action Tracking — Ergonomics</div><div class="msub">Internal EHS Compliance — Fremont</div></td>
-              <td><span class="chip chip-teal">EHS</span></td>
-              <td style="font-size:12px">Fremont, CA</td>
-              <td style="font-size:12px">R. Nakamura</td>
-              <td><span class="chip chip-green">Monitoring</span></td>
-              <td><span class="rdot rdot-low"></span></td>
-              <td><span class="chip chip-blue">May 28</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div><!-- /view-matters -->
-
-    <!-- ══════════════════════ VIEW: CALENDAR ══ -->
-    <div class="view" id="view-calendar">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
-        <div style="display:flex;align-items:center;gap:12px">
-          <button class="btn btn-ghost btn-sm">← Prev</button>
-          <span style="font-size:16px;font-weight:600">April 2026</span>
-          <button class="btn btn-ghost btn-sm">Next →</button>
-        </div>
-        <div style="display:flex;gap:8px;align-items:center">
-          <span class="chip chip-red">● Critical</span>
-          <span class="chip chip-amber">● Filing/Agency</span>
-          <span class="chip chip-blue">● Review</span>
-          <span class="chip chip-green">● Interview</span>
-        </div>
+      <!-- Weekly view -->
+      <div class="tl-week-view" id="tl-week-view">
+        <div class="tl-overdue-strip" id="tl-week-overdue"></div>
+        <div class="tl-week-grid" id="tl-week-grid"></div>
       </div>
 
-      <div class="cal-grid" style="margin-bottom:5px">
-        <div class="cal-hdr">Mon</div><div class="cal-hdr">Tue</div><div class="cal-hdr">Wed</div>
-        <div class="cal-hdr">Thu</div><div class="cal-hdr">Fri</div><div class="cal-hdr">Sat</div><div class="cal-hdr">Sun</div>
+      <!-- Monthly overview -->
+      <div class="tl-month-view" id="tl-month-view" style="display:none">
+        <div class="tl-month-grid" id="tl-month-grid"></div>
       </div>
+    </div>
 
-      <div class="cal-grid">
-        <!-- Row 1: Apr 6–12 -->
-        <div class="cal-day"><div class="cal-date">6</div></div>
-        <div class="cal-day"><div class="cal-date">7</div></div>
-        <div class="cal-day"><div class="cal-date">8</div></div>
-        <div class="cal-day"><div class="cal-date">9</div></div>
-        <div class="cal-day"><div class="cal-date">10</div></div>
-        <div class="cal-day"><div class="cal-date">11</div></div>
-        <div class="cal-day today">
-          <div class="cal-date">12</div>
-          <div class="cal-ev ev-blu">Counsel status call</div>
+    <!-- ═══════ VIEW: REQUESTS ═══════ -->
+    <div class="view" id="view-requests">
+      <div class="requests-container">
+        <div class="requests-header">
+          <span>Incoming Requests</span>
+          <span class="req-count" id="req-count">0 open</span>
         </div>
-        <!-- Row 2: Apr 13–19 -->
-        <div class="cal-day">
-          <div class="cal-date">13</div>
-          <div class="cal-ev ev-grn">Witness interview</div>
-        </div>
-        <div class="cal-day">
-          <div class="cal-date">14</div>
-          <div class="cal-ev ev-blu">Doc review — 0843</div>
-        </div>
-        <div class="cal-day">
-          <div class="cal-date">15</div>
-          <div class="cal-ev ev-red">NLRB brief DUE</div>
-          <div class="cal-ev ev-grn">HR interview 2:00pm</div>
-        </div>
-        <div class="cal-day"><div class="cal-date">16</div></div>
-        <div class="cal-day">
-          <div class="cal-date">17</div>
-          <div class="cal-ev ev-blu">CAP review mtg</div>
-        </div>
-        <div class="cal-day"><div class="cal-date">18</div>
-          <div class="cal-ev ev-red">EEOC Position Stmt</div>
-        </div>
-        <div class="cal-day"><div class="cal-date">19</div></div>
-        <!-- Row 3: Apr 20–26 -->
-        <div class="cal-day">
-          <div class="cal-date">20</div>
-          <div class="cal-ev ev-amb">Cal/OSHA abatement</div>
-        </div>
-        <div class="cal-day">
-          <div class="cal-date">21</div>
-          <div class="cal-ev ev-grn">Witness interview</div>
-        </div>
-        <div class="cal-day">
-          <div class="cal-date">22</div>
-          <div class="cal-ev ev-amb">OSHA Citation Resp.</div>
-        </div>
-        <div class="cal-day"><div class="cal-date">23</div></div>
-        <div class="cal-day">
-          <div class="cal-date">24</div>
-          <div class="cal-ev ev-blu">Mediation prep call</div>
-        </div>
-        <div class="cal-day">
-          <div class="cal-date">25</div>
-          <div class="cal-ev ev-amb">DFEH Mediation Brief</div>
-        </div>
-        <div class="cal-day"><div class="cal-date">26</div></div>
-        <!-- Row 4: Apr 27–30 -->
-        <div class="cal-day"><div class="cal-date">27</div></div>
-        <div class="cal-day"><div class="cal-date">28</div></div>
-        <div class="cal-day">
-          <div class="cal-date">29</div>
-          <div class="cal-ev ev-blu">Invoice review</div>
-        </div>
-        <div class="cal-day">
-          <div class="cal-date">30</div>
-          <div class="cal-ev ev-blu">Q1 matter report due</div>
-        </div>
-        <div class="cal-day" style="opacity:.35"><div class="cal-date">1</div></div>
-        <div class="cal-day" style="opacity:.35"><div class="cal-date">2</div></div>
-        <div class="cal-day" style="opacity:.35"><div class="cal-date">3</div></div>
+        <div id="request-list"></div>
       </div>
-    </div><!-- /view-calendar -->
+    </div>
 
-    <!-- ══════════════════════ VIEW: DOCUMENTS ══ -->
-    <div class="view" id="view-docs">
-      <div class="filters">
-        <div class="fchip active" onclick="filterClick(this)">All Documents</div>
-        <div class="fchip" onclick="filterClick(this)">Privileged</div>
-        <div class="fchip" onclick="filterClick(this)">Regulatory</div>
-        <div class="fchip" onclick="filterClick(this)">Correspondence</div>
-        <div class="fchip" onclick="filterClick(this)">Evidence</div>
-        <div class="fchip" onclick="filterClick(this)">Filings</div>
-        <div class="fchip" onclick="filterClick(this)">Corrective Action</div>
+    <!-- ═══════ VIEW: PROJECTS ═══════ -->
+    <div class="view" id="view-projects">
+      <div class="projects-container">
+        <div class="projects-header">
+          <span>Projects</span>
+          <span class="proj-count">— click a project to view its tasks</span>
+        </div>
+        <div id="projects-list"></div>
       </div>
-      <div class="card">
-        <div class="card-header">
-          <span class="card-title">Document Repository — 186 Files</span>
-          <button class="btn btn-primary btn-sm">+ Upload Document</button>
-        </div>
-        <div class="card-body" style="padding:8px 14px">
-          <div class="doc-row">
-            <div class="doc-icon doc-pdf">📄</div>
-            <div style="flex:1">
-              <div class="doc-name">EEOC Position Statement Draft v3 — M-2024-0891.pdf</div>
-              <div class="doc-meta">Uploaded Apr 10, 2026 · E. Whitmore · Hendricks & Voss LLP · 847 KB</div>
-            </div>
-            <span class="priv-tag">PRIVILEGED</span>
-            <span class="chip chip-purple" style="margin-left:8px">Employment</span>
-          </div>
-          <div class="doc-row">
-            <div class="doc-icon doc-pdf">📄</div>
-            <div style="flex:1">
-              <div class="doc-name">OSHA Citation No. 2024-TX-00417 — Original Issuance.pdf</div>
-              <div class="doc-meta">Uploaded Mar 28, 2026 · R. Nakamura · OSHA Austin Area Office · 312 KB</div>
-            </div>
-            <span class="chip chip-gray">Regulatory</span>
-            <span class="chip chip-teal" style="margin-left:6px">EHS</span>
-          </div>
-          <div class="doc-row">
-            <div class="doc-icon doc-doc">📝</div>
-            <div style="flex:1">
-              <div class="doc-name">Witness Interview Notes — Fremont Paint Shop Incident.docx</div>
-              <div class="doc-meta">Uploaded Apr 3, 2026 · S. Morales · Internal Investigation · 92 KB</div>
-            </div>
-            <span class="priv-tag">PRIVILEGED</span>
-            <span class="chip chip-teal" style="margin-left:8px">EHS</span>
-          </div>
-          <div class="doc-row">
-            <div class="doc-icon doc-xls">📊</div>
-            <div style="flex:1">
-              <div class="doc-name">Production Associate Timekeeping Export — Q1 2026.xlsx</div>
-              <div class="doc-meta">Uploaded Apr 1, 2026 · T. Osei · HR Systems Export · 4.2 MB</div>
-            </div>
-            <span class="chip chip-gray">Evidence</span>
-            <span class="chip chip-purple" style="margin-left:6px">Employment</span>
-          </div>
-          <div class="doc-row">
-            <div class="doc-icon doc-pdf">📄</div>
-            <div style="flex:1">
-              <div class="doc-name">DFEH RFI Response — Sparks Accommodation Request.pdf</div>
-              <div class="doc-meta">Uploaded Mar 20, 2026 · T. Osei · Carver & Osei LLP · 256 KB</div>
-            </div>
-            <span class="priv-tag">PRIVILEGED</span>
-            <span class="chip chip-purple" style="margin-left:8px">Employment</span>
-          </div>
-          <div class="doc-row">
-            <div class="doc-icon doc-pdf">📄</div>
-            <div style="flex:1">
-              <div class="doc-name">Hazmat Manifest Discrepancy Report — Battery Facility Q4.pdf</div>
-              <div class="doc-meta">Uploaded Apr 5, 2026 · S. Morales · EHS Compliance Team · 188 KB</div>
-            </div>
-            <span class="chip chip-gray">Regulatory</span>
-            <span class="chip chip-teal" style="margin-left:6px">EHS</span>
-          </div>
-          <div class="doc-row">
-            <div class="doc-icon doc-doc">📝</div>
-            <div style="flex:1">
-              <div class="doc-name">Corrective Action Plan — Body-in-White Ergonomics Program.docx</div>
-              <div class="doc-meta">Uploaded Apr 8, 2026 · R. Nakamura · EHS Compliance · 141 KB</div>
-            </div>
-            <span class="chip chip-teal">EHS</span>
-            <span class="chip chip-green" style="margin-left:6px">Corrective Action</span>
-          </div>
-          <div class="doc-row">
-            <div class="doc-icon doc-doc">📝</div>
-            <div style="flex:1">
-              <div class="doc-name">Separation Agreement Draft — Fremont Senior Supervisor.docx</div>
-              <div class="doc-meta">Uploaded Apr 6, 2026 · E. Whitmore · Internal · 68 KB</div>
-            </div>
-            <span class="priv-tag">PRIVILEGED</span>
-            <span class="chip chip-purple" style="margin-left:8px">Employment</span>
-          </div>
-        </div>
+    </div>
+
+    <!-- ═══════ VIEW: MY WORK ═══════ -->
+    <div class="view" id="view-mywork">
+      <div class="mywork-container">
+        <div class="mw-stats" id="mw-stats"></div>
+        <div class="mw-section" id="mw-overdue"></div>
+        <div class="mw-section" id="mw-today"></div>
+        <div class="mw-section" id="mw-upcoming"></div>
+        <div class="mw-section" id="mw-projects"></div>
+        <div class="mw-section" id="mw-requests"></div>
+        <div class="mw-section" id="mw-activity"></div>
       </div>
-    </div><!-- /view-docs -->
+    </div>
 
-    <!-- ══════════════════════ VIEW: OUTSIDE COUNSEL ══ -->
-    <div class="view" id="view-counsel">
-      <div class="stats-grid">
-        <div class="stat-card stat-accent">
-          <div class="stat-label">Active Firms</div>
-          <div class="stat-value">6</div>
-          <div class="stat-delta">Across Employment &amp; EHS</div>
-        </div>
-        <div class="stat-card stat-amber">
-          <div class="stat-label">Pending Invoices</div>
-          <div class="stat-value">12</div>
-          <div class="stat-delta"><span class="delta-warn">$284K</span>&nbsp;awaiting review</div>
-        </div>
-        <div class="stat-card stat-green">
-          <div class="stat-label">YTD Total Spend</div>
-          <div class="stat-value">$2.8M</div>
-          <div class="stat-delta">Annual budget: $3.4M</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Budget Remaining</div>
-          <div class="stat-value" style="color:var(--green)">$726K</div>
-          <div class="stat-delta"><span class="delta-good">21%</span>&nbsp;headroom</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <span class="card-title">Law Firm Roster</span>
-          <button class="btn btn-ghost btn-sm">+ Add Firm</button>
-        </div>
-        <table class="tbl">
-          <thead>
-            <tr><th>Firm</th><th>Practice Area</th><th>Open Matters</th><th>YTD Invoiced</th><th>Budget Cap</th><th>Invoice Status</th><th>Rate (Avg)</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><div class="mtitle">Hendricks & Voss LLP</div><div class="msub">San Francisco, CA</div></td>
-              <td><span class="chip chip-purple">Employment Litigation</span></td>
-              <td style="font-family:var(--mono)">18</td>
-              <td style="font-family:var(--mono);color:var(--amber)">$842K</td>
-              <td style="font-family:var(--mono)">$1.0M</td>
-              <td><span class="chip chip-amber">3 Pending</span></td>
-              <td style="font-family:var(--mono);font-size:12px">$495/hr</td>
-            </tr>
-            <tr>
-              <td><div class="mtitle">Lester Tran LLP</div><div class="msub">Austin, TX</div></td>
-              <td><span class="chip chip-teal">EHS / Regulatory</span></td>
-              <td style="font-family:var(--mono)">11</td>
-              <td style="font-family:var(--mono)">$618K</td>
-              <td style="font-family:var(--mono)">$900K</td>
-              <td><span class="chip chip-green">Current</span></td>
-              <td style="font-family:var(--mono);font-size:12px">$420/hr</td>
-            </tr>
-            <tr>
-              <td><div class="mtitle">Carver & Osei LLP</div><div class="msub">Las Vegas, NV</div></td>
-              <td><span class="chip chip-purple">Employment / Labor</span></td>
-              <td style="font-family:var(--mono)">9</td>
-              <td style="font-family:var(--mono)">$462K</td>
-              <td style="font-family:var(--mono)">$700K</td>
-              <td><span class="chip chip-green">Current</span></td>
-              <td style="font-family:var(--mono);font-size:12px">$385/hr</td>
-            </tr>
-            <tr>
-              <td><div class="mtitle">Reid Nakamura Group</div><div class="msub">New York, NY</div></td>
-              <td><span class="chip chip-purple">Labor Relations</span></td>
-              <td style="font-family:var(--mono)">7</td>
-              <td style="font-family:var(--mono)">$328K</td>
-              <td style="font-family:var(--mono)">$500K</td>
-              <td><span class="chip chip-amber">2 Pending</span></td>
-              <td style="font-family:var(--mono);font-size:12px">$450/hr</td>
-            </tr>
-            <tr>
-              <td><div class="mtitle">Morales EHS Advisory</div><div class="msub">Houston, TX</div></td>
-              <td><span class="chip chip-teal">EHS Consulting</span></td>
-              <td style="font-family:var(--mono)">5</td>
-              <td style="font-family:var(--mono)">$224K</td>
-              <td style="font-family:var(--mono)">$400K</td>
-              <td><span class="chip chip-red">1 Disputed</span></td>
-              <td style="font-family:var(--mono);font-size:12px">$350/hr</td>
-            </tr>
-            <tr>
-              <td><div class="mtitle">Patel Immigration PLLC</div><div class="msub">Seattle, WA</div></td>
-              <td><span class="chip chip-blue">Immigration</span></td>
-              <td style="font-family:var(--mono)">4</td>
-              <td style="font-family:var(--mono)">$180K</td>
-              <td style="font-family:var(--mono)">$250K</td>
-              <td><span class="chip chip-green">Current</span></td>
-              <td style="font-family:var(--mono);font-size:12px">$340/hr</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div><!-- /view-counsel -->
-
-    <!-- ══════════════════════ VIEW: ANALYTICS ══ -->
-    <div class="view" id="view-analytics">
-      <div class="analytics-grid">
-
-        <!-- Matter volume by category -->
-        <div class="card">
-          <div class="card-header"><span class="card-title">Matters by Category — Q1 2026</span></div>
-          <div class="card-body">
-            <div class="bar-chart" style="height:120px">
-              <div class="bc-col"><div class="bc-val">32</div><div class="bc-bar" style="height:100px;background:#a78bfa"></div><div class="bc-lbl">Workplace Complaint</div></div>
-              <div class="bc-col"><div class="bc-val">18</div><div class="bc-bar" style="height:56px;background:#a78bfa;opacity:.8"></div><div class="bc-lbl">Accommodation</div></div>
-              <div class="bc-col"><div class="bc-val">14</div><div class="bc-bar" style="height:44px;background:#a78bfa;opacity:.65"></div><div class="bc-lbl">Wage/Hour</div></div>
-              <div class="bc-col"><div class="bc-val">22</div><div class="bc-bar" style="height:68px;background:var(--teal)"></div><div class="bc-lbl">OSHA Citation</div></div>
-              <div class="bc-col"><div class="bc-val">17</div><div class="bc-bar" style="height:53px;background:var(--teal);opacity:.8"></div><div class="bc-lbl">Incident Inv.</div></div>
-              <div class="bc-col"><div class="bc-val">11</div><div class="bc-bar" style="height:34px;background:var(--teal);opacity:.65"></div><div class="bc-lbl">Env. Reporting</div></div>
-            </div>
-            <div style="display:flex;gap:18px;margin-top:14px;font-size:11px;color:var(--text3)">
-              <span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#a78bfa;display:inline-block"></span>Employment (87 matters)</span>
-              <span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:var(--teal);display:inline-block"></span>EHS (55 matters)</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Average age -->
-        <div class="card">
-          <div class="card-header"><span class="card-title">Average Matter Age by Status</span></div>
-          <div class="card-body">
-            <div style="display:flex;flex-direction:column;gap:10px">
-              <div class="spend-row"><div class="spend-firm">Investigation</div><div class="spend-track"><div class="spend-fill" style="width:85%;background:var(--red)"></div></div><div class="spend-amt">68 days</div></div>
-              <div class="spend-row"><div class="spend-firm">Response Prep</div><div class="spend-track"><div class="spend-fill" style="width:65%;background:var(--amber)"></div></div><div class="spend-amt">52 days</div></div>
-              <div class="spend-row"><div class="spend-firm">Mediation Prep</div><div class="spend-track"><div class="spend-fill" style="width:55%;background:var(--amber)"></div></div><div class="spend-amt">44 days</div></div>
-              <div class="spend-row"><div class="spend-firm">Abatement</div><div class="spend-track"><div class="spend-fill" style="width:40%;background:var(--accent)"></div></div><div class="spend-amt">32 days</div></div>
-              <div class="spend-row"><div class="spend-firm">Filing Prep</div><div class="spend-track"><div class="spend-fill" style="width:25%;background:var(--green)"></div></div><div class="spend-amt">20 days</div></div>
-              <div class="spend-row"><div class="spend-firm">Closed (avg)</div><div class="spend-track"><div class="spend-fill" style="width:100%;background:var(--border2)"></div></div><div class="spend-amt">80 days</div></div>
-            </div>
-            <div style="font-size:11px;color:var(--text3);margin-top:12px;border-top:1px solid var(--border);padding-top:10px">
-              Target closure: ≤ 60 days &nbsp;·&nbsp; Portfolio avg: <span style="color:var(--amber)">54 days</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- High-risk sites -->
-        <div class="card">
-          <div class="card-header"><span class="card-title">Highest-Risk Sites by Active Matters</span></div>
-          <div class="card-body">
-            <div style="display:flex;flex-direction:column;gap:10px">
-              <div class="spend-row"><div class="spend-firm">Fremont, CA</div><div class="spend-track"><div class="spend-fill" style="width:95%;background:var(--red)"></div></div><div class="spend-amt">38 open</div></div>
-              <div class="spend-row"><div class="spend-firm">Austin, TX</div><div class="spend-track"><div class="spend-fill" style="width:63%;background:var(--amber)"></div></div><div class="spend-amt">24 open</div></div>
-              <div class="spend-row"><div class="spend-firm">Buffalo, NY</div><div class="spend-track"><div class="spend-fill" style="width:58%;background:var(--amber)"></div></div><div class="spend-amt">22 open</div></div>
-              <div class="spend-row"><div class="spend-firm">Sparks, NV</div><div class="spend-track"><div class="spend-fill" style="width:55%;background:var(--accent)"></div></div><div class="spend-amt">21 open</div></div>
-              <div class="spend-row"><div class="spend-firm">Lathrop, CA</div><div class="spend-track"><div class="spend-fill" style="width:47%;background:var(--accent)"></div></div><div class="spend-amt">18 open</div></div>
-              <div class="spend-row"><div class="spend-firm">Shanghai</div><div class="spend-track"><div class="spend-fill" style="width:50%;background:var(--text3)"></div></div><div class="spend-amt">19 open</div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Response timeliness -->
-        <div class="card">
-          <div class="card-header"><span class="card-title">Agency Response Timeliness — Last 90 Days</span></div>
-          <div class="card-body">
-            <div class="perf-nums">
-              <div class="perf-num">
-                <div class="perf-val" style="color:var(--green)">74%</div>
-                <div class="perf-lbl">On-Time</div>
-              </div>
-              <div class="perf-div"></div>
-              <div class="perf-num">
-                <div class="perf-val" style="color:var(--amber)">19%</div>
-                <div class="perf-lbl">Slight Delay</div>
-              </div>
-              <div class="perf-div"></div>
-              <div class="perf-num">
-                <div class="perf-val" style="color:var(--red)">7%</div>
-                <div class="perf-lbl">Overdue</div>
-              </div>
-            </div>
-            <div style="font-size:11px;color:var(--text3);border-top:1px solid var(--border);padding-top:12px;margin-top:12px">
-              Team target: <strong style="color:var(--text2)">85% on-time</strong> &nbsp;·&nbsp; Gap to close: <span style="color:var(--amber)">+11pp</span>
-            </div>
-            <div style="margin-top:14px">
-              <div class="spend-row"><div class="spend-firm">EEOC responses</div><div class="spend-track"><div class="spend-fill" style="width:80%;background:var(--green)"></div></div><div class="spend-amt">80%</div></div>
-              <div class="spend-row"><div class="spend-firm">Cal/OSHA</div><div class="spend-track"><div class="spend-fill" style="width:70%;background:var(--amber)"></div></div><div class="spend-amt">70%</div></div>
-              <div class="spend-row"><div class="spend-firm">DFEH</div><div class="spend-track"><div class="spend-fill" style="width:76%;background:var(--green)"></div></div><div class="spend-amt">76%</div></div>
-              <div class="spend-row"><div class="spend-firm">EPA / Env.</div><div class="spend-track"><div class="spend-fill" style="width:58%;background:var(--red)"></div></div><div class="spend-amt">58%</div></div>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /analytics-grid -->
-    </div><!-- /view-analytics -->
-
-  </div><!-- /content -->
-</div><!-- /main -->
+  </div>
+</div>
 
 </div><!-- /shell -->
 
 
-<!-- ════════════════════════════════ MATTER DETAIL DRAWER ════════ -->
-<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+<!-- ═══════════════════════ TASK DETAIL DRAWER ════════════ -->
+<div class="overlay" id="overlay"></div>
 
 <div class="drawer" id="drawer">
   <div class="dwr-head">
-    <div>
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;flex-wrap:wrap">
-        <span class="mid">M-2024-0891</span>
-        <span class="chip chip-purple">Employment</span>
-        <span class="chip chip-red">Critical Risk</span>
-        <span class="chip chip-amber">Investigation</span>
-      </div>
-      <div style="font-size:17px;font-weight:600;color:var(--text);line-height:1.3">
-        Retaliation Allegation — Fremont Assembly
-      </div>
-      <div style="font-size:12px;color:var(--text3);margin-top:4px">
-        EEOC Charge No. 550-2024-01822 · Fremont, CA · Opened Jan 14, 2026
-      </div>
+    <div class="dwr-head-top">
+      <span class="task-id-label" id="drawer-id"></span>
+      <button class="close-btn" id="btn-close-drawer">×</button>
     </div>
-    <button class="close-btn" onclick="closeDrawer()">×</button>
+    <input type="text" class="dwr-title-input" id="drawer-title" placeholder="Task title" />
   </div>
-
   <div class="dwr-body">
-
-    <!-- AI Intelligence Panel -->
-    <div class="ai-panel">
-      <div class="ai-header">
-        <span class="ai-badge">Meridian AI</span>
-        <span class="ai-label">Matter Intelligence · Generated Apr 12, 2026</span>
+    <div class="dwr-fields">
+      <div class="dwr-field">
+        <label>Status</label>
+        <select id="drawer-status">
+          <option value="pending">Pending</option>
+          <option value="in-progress">In Progress</option>
+          <option value="completed">Completed</option>
+        </select>
       </div>
-      <div class="ai-summary">
-        Former production supervisor alleges termination in retaliation for an internal safety complaint filed with the EHS team in November 2024. EEOC charge filed January 2026. Key risk factors: alleged proximity between complaint date and termination (47 days), complainant retained outside counsel with prior EEOC success record. Internal investigation memo is privileged but not yet finalized. <strong style="color:var(--text)">Position Statement deadline: April 18 — 6 days remaining.</strong>
+      <div class="dwr-field">
+        <label>Priority</label>
+        <select id="drawer-priority">
+          <option value="urgent">Urgent</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
       </div>
-      <div class="ai-actions">
-        <button class="ai-btn">📋 Draft Position Statement</button>
-        <button class="ai-btn">⚡ Generate Timeline</button>
-        <button class="ai-btn">🔍 Spot Legal Issues</button>
-        <button class="ai-btn">📊 Executive Briefing</button>
-        <button class="ai-btn">🔗 Find Similar Matters</button>
-        <button class="ai-btn">📧 Draft Counsel Update</button>
+      <div class="dwr-field">
+        <label>Owner</label>
+        <select id="drawer-owner">
+          <option value="">Unassigned</option>
+          <option value="Jordan Miller">Jordan Miller</option>
+          <option value="Priya Shah">Priya Shah</option>
+          <option value="Carlos Reyes">Carlos Reyes</option>
+          <option value="Aisha Okafor">Aisha Okafor</option>
+        </select>
       </div>
-    </div>
-
-    <!-- Detail Grid -->
-    <div class="detail-grid">
-      <div class="df"><label>Matter ID</label><div class="val-mono">M-2024-0891</div></div>
-      <div class="df"><label>Status</label><span class="chip chip-amber">Investigation</span></div>
-      <div class="df"><label>Category</label><div class="val">Retaliation Allegation</div></div>
-      <div class="df"><label>Business Unit</label><div class="val">Manufacturing — Fremont Assembly</div></div>
-      <div class="df"><label>Legal Lead</label><div class="val">Elena Whitmore</div></div>
-      <div class="df"><label>Stakeholder Owner</label><div class="val">Marcus Delgado (Sr. HRBP)</div></div>
-      <div class="df"><label>Regulator / Agency</label><div class="val">EEOC — San Francisco District Office</div></div>
-      <div class="df"><label>Outside Counsel</label><div class="val">Hendricks & Voss LLP</div></div>
-      <div class="df"><label>Date Opened</label><div class="val-mono">Jan 14, 2026</div></div>
-      <div class="df"><label>Next Deadline</label><span class="chip chip-red">Apr 18, 2026 — EEOC Position Statement</span></div>
-      <div class="df"><label>Priority / Risk</label><span class="chip chip-red">Critical</span></div>
-      <div class="df"><label>Estimated Exposure</label><div class="val">$280K – $1.2M</div></div>
-    </div>
-
-    <div class="sec-div"></div>
-
-    <!-- Investigation Timeline -->
-    <div class="sec-header" style="margin-bottom:16px">
-      <span class="sec-title">Investigation Timeline</span>
-      <span class="sec-link">+ Add Event</span>
-    </div>
-    <div class="tl">
-      <div class="tl-item done">
-        <div class="tl-date">Nov 18, 2024</div>
-        <div class="tl-title">Safety complaint filed by claimant</div>
-        <div class="tl-note">Complaint submitted via EHS reporting portal re: lockout/tagout violations on Line 7, Fremont Assembly.</div>
+      <div class="dwr-field">
+        <label>Due Date</label>
+        <input type="date" id="drawer-due" />
       </div>
-      <div class="tl-item done">
-        <div class="tl-date">Jan 4, 2025</div>
-        <div class="tl-title">Claimant separation — documented performance basis</div>
-        <div class="tl-note">HR-documented PIPs over Q3–Q4 2024 predated complaint. Decision maker: Plant Director. HR reviewed and approved.</div>
+      <div class="dwr-field">
+        <label>Type</label>
+        <select id="drawer-type">
+          <option value="task">Task</option>
+          <option value="request">Request</option>
+        </select>
       </div>
-      <div class="tl-item done">
-        <div class="tl-date">Jan 14, 2026</div>
-        <div class="tl-title">EEOC charge received</div>
-        <div class="tl-note">Charge No. 550-2024-01822 filed. Retaliation and wrongful termination alleged under Title VII and Cal. Labor Code § 1102.5.</div>
+      <div class="dwr-field">
+        <label>Project</label>
+        <select id="drawer-project">
+          <option value="">None</option>
+          <option value="P-001">Q2 Onboarding</option>
+          <option value="P-002">Office Relocation</option>
+          <option value="P-003">Policy Updates</option>
+          <option value="P-004">Vendor Management</option>
+          <option value="P-005">Q1 Wrap-up</option>
+        </select>
       </div>
-      <div class="tl-item done">
-        <div class="tl-date">Feb 3, 2026</div>
-        <div class="tl-title">Internal investigation opened — outside counsel retained</div>
-        <div class="tl-note">Legal lead assigned (E. Whitmore). Hendricks & Voss LLP retained. Litigation hold issued to IT, HR, and Manufacturing.</div>
+      <div class="dwr-field">
+        <label>Team</label>
+        <select id="drawer-team">
+          <option value="">None</option>
+          <option value="People Ops">People Ops</option>
+          <option value="HR">HR</option>
+          <option value="Operations">Operations</option>
+        </select>
       </div>
-      <div class="tl-item done">
-        <div class="tl-date">Mar 12, 2026</div>
-        <div class="tl-title">Witness interviews completed</div>
-        <div class="tl-note">Plant Director, 3 line supervisors, and 2 coworkers interviewed. Interview notes are attorney-client privileged.</div>
-      </div>
-      <div class="tl-item done">
-        <div class="tl-date">Mar 28 – Apr 5, 2026</div>
-        <div class="tl-title">Document collection and privilege review</div>
-        <div class="tl-note">858 documents collected from HR, EHS, and email. 42 flagged privileged. Hendricks & Voss completed review Apr 5.</div>
-      </div>
-      <div class="tl-item active">
-        <div class="tl-date">Apr 5–18, 2026 · IN PROGRESS</div>
-        <div class="tl-title">Position Statement drafting and internal review</div>
-        <div class="tl-note">Hendricks & Voss drafting v3. Internal review by E. Whitmore due Apr 15. Final submission to EEOC by Apr 18.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-date">Apr 18, 2026</div>
-        <div class="tl-title">EEOC Position Statement due</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-date">TBD</div>
-        <div class="tl-title">EEOC mediation invitation or no-cause determination</div>
+      <div class="dwr-field">
+        <label>Source</label>
+        <input type="text" id="drawer-source" placeholder="e.g. Slack, Email" />
       </div>
     </div>
 
-    <div class="sec-div"></div>
-
-    <!-- Key Facts -->
-    <div class="keyfacts">
-      <div class="keyfacts-label">Key Facts</div>
-      <p>47 days between safety complaint (Nov 18) and termination (Jan 4). Performance documentation (PIPs) predates complaint by 4+ months. Claimant had 2 prior disciplinary actions on record. Decision maker had no direct knowledge of EHS complaint per HR records. Outside counsel has identified 3 analogous fact patterns resolved in company's favor at EEOC stage. No prior complaints from claimant. Safety complaint was investigated separately and found substantiated — corrective action taken independently.</p>
+    <div class="dwr-section">
+      <label>Description</label>
+      <textarea id="drawer-desc" rows="4" placeholder="Add details…"></textarea>
     </div>
 
-    <div class="sec-div"></div>
-
-    <!-- Linked Documents -->
-    <div class="sec-header">
-      <span class="sec-title">Linked Documents (4 of 14)</span>
-      <span class="sec-link">View All →</span>
-    </div>
-    <div class="doc-row" style="padding:8px 0">
-      <div class="doc-icon doc-pdf">📄</div>
-      <div style="flex:1"><div class="doc-name">EEOC Position Statement Draft v3.pdf</div><div class="doc-meta">Apr 10 · Hendricks & Voss LLP · 847 KB</div></div>
-      <span class="priv-tag">PRIVILEGED</span>
-    </div>
-    <div class="doc-row" style="padding:8px 0">
-      <div class="doc-icon doc-doc">📝</div>
-      <div style="flex:1"><div class="doc-name">PIP Documentation — Q3/Q4 2024.docx</div><div class="doc-meta">Feb 5 · HR Records · 210 KB</div></div>
-      <span class="chip chip-gray">HR Record</span>
-    </div>
-    <div class="doc-row" style="padding:8px 0">
-      <div class="doc-icon doc-doc">📝</div>
-      <div style="flex:1"><div class="doc-name">Witness Interview Summary — Privileged.docx</div><div class="doc-meta">Mar 12 · E. Whitmore · 92 KB</div></div>
-      <span class="priv-tag">PRIVILEGED</span>
-    </div>
-    <div class="doc-row" style="padding:8px 0">
-      <div class="doc-icon doc-pdf">📄</div>
-      <div style="flex:1"><div class="doc-name">EEOC Charge No. 550-2024-01822 — Original.pdf</div><div class="doc-meta">Jan 14 · EEOC San Francisco · 156 KB</div></div>
-      <span class="chip chip-gray">Regulatory</span>
+    <!-- Attachments -->
+    <div class="dwr-section" id="drawer-attachments-section">
+      <div class="dwr-section-header">
+        <label>Attachments</label>
+        <label class="dwr-upload-btn" id="btn-upload-file">
+          + Add file
+          <input type="file" id="file-input" multiple hidden />
+        </label>
+      </div>
+      <div id="drawer-attachments" class="dwr-attachments-list"></div>
     </div>
 
-  </div><!-- /dwr-body -->
-</div><!-- /drawer -->
+    <!-- Comments -->
+    <div class="dwr-section" id="drawer-comments-section">
+      <label>Comments</label>
+      <div id="drawer-comments" class="dwr-comments-list"></div>
+      <div class="dwr-comment-input">
+        <input type="text" id="comment-input" placeholder="Add a comment…" />
+        <button class="btn btn-primary btn-sm" id="btn-add-comment">Post</button>
+      </div>
+    </div>
 
+    <!-- Activity Log -->
+    <div class="dwr-section" id="drawer-activity-section">
+      <label>Activity</label>
+      <div id="drawer-activity" class="dwr-activity-list"></div>
+    </div>
+
+    <div class="dwr-actions">
+      <button class="btn btn-primary" id="btn-save-task">Save</button>
+      <button class="btn btn-danger" id="btn-delete-task">Delete</button>
+    </div>
+  </div>
+</div>
 
 <script src="app.js"></script>
 </body>
