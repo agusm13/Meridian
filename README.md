@@ -1,4 +1,5 @@
 # Meridian
+### Operations Workflow System
 
 Meridian is a lightweight operations tool designed to help teams stay organized across tasks, projects, and day-to-day work.
 
@@ -6,76 +7,68 @@ Most tools are either too flexible or too complex. Meridian focuses on something
 
 ---
 
-## What it does
+## What It Does
 
 Meridian is built around three core layers:
 
-- **Tasks** – track work with clear status (pending, in progress, completed)
-- **Projects** – group related work so tasks don’t feel disconnected
-- **Teams** – provide context for who is involved and responsible
+| Layer | Purpose |
+|-------|---------|
+| **Tasks** | Track work with clear status — pending, in progress, completed |
+| **Projects** | Group related work so tasks don't feel disconnected |
+| **Teams** | Provide context for who is involved and responsible |
 
-Tasks are not just placeholders. Each task supports real work, including:
+Each task supports real work, including:
 
-- Updating status
+- Updating status and priority
 - Assigning ownership
 - Adding notes or comments
-- Uploading and viewing files
+- Uploading and viewing attachments
 
 ---
 
-## How it works
+## Views
 
 The interface is designed to support daily coordination, not just planning.
 
-- A **board view** for managing tasks visually
-- A **list view** for quick scanning
-- A **timeline view** for tracking deadlines
-- A **projects layer** to organize work across teams
-- A **"My Work" view** to see assigned tasks and requests
-
-Projects are intentionally kept stable, while tasks are created as needed. This reflects how work typically happens inside teams.
+- **Board** — manage tasks visually by status
+- **List** — quick scanning and filtering
+- **Timeline** — track deadlines across the week
+- **Projects** — organize work across teams
+- **My Work** — see your assigned tasks and requests
 
 ---
 
-## Calendar (Work Timeline)
+## Calendar — Weekly Work Timeline
 
 Instead of a traditional calendar, Meridian uses a time-based view focused on how work actually gets done.
-
-The **Weekly Work Timeline** is the main calendar view. It shows tasks across the week (Mon–Sun) and helps users plan work in a more actionable way.
 
 - Tasks are displayed under each day based on due dates
 - Today is clearly highlighted
 - Overdue tasks are surfaced and easy to spot
-- Tasks can span multiple days if needed
 - Priority is visible without adding clutter
 
-> This is based on the idea that people plan work weekly, not monthly.
+> People plan work weekly, not monthly. The weekly view reflects that.
 
-A **Monthly Overview** is also included, but kept intentionally simple. It provides a quick way to understand workload across days without showing full task detail.
-
----
-
-## Why I built this
-
-While working on team-based workflows, I noticed that most tools either:
-
-- Give too much flexibility, which leads to messy systems, or
-- Add too many features, which makes them hard to use daily
-
-Meridian is an attempt to find a balance. It focuses on clarity, structure, and execution — especially for teams handling ongoing work like requests, onboarding, and coordination.
+A **Monthly Overview** is also included — kept intentionally simple to give a quick sense of workload without full task detail.
 
 ---
 
-## What makes it different
+## Why I Built This
 
-Meridian is not trying to replace full project management tools. Instead, it focuses on a specific gap.
+While working on team-based workflows, I noticed that most tools either give too much flexibility (leading to messy systems) or add too many features (making them hard to use daily).
 
-- It provides structure without being overwhelming
-- It is built for ongoing work, not just project planning
-- It connects work across multiple teams, not just one
-- It prioritizes clarity and execution over customization
+Meridian is an attempt to find a balance — focused on clarity, structure, and execution, especially for teams handling ongoing work like requests, onboarding, and coordination.
 
-The goal is to make it easier to understand what needs to be done, what’s coming next, and how work is moving across teams.
+---
+
+## What Makes It Different
+
+Meridian is not trying to replace full project management tools. It fills a specific gap:
+
+- Structure without being overwhelming
+- Built for ongoing work, not just project launches
+- Connects work across multiple teams
+- Prioritizes clarity and execution over customization
 
 ---
 
